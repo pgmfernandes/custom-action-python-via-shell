@@ -9,5 +9,5 @@ runs:
   steps:
     - run: | 
         export GH_TOKEN  ${{ inputs.GH_TOKEN }}
-        python src/main.py --
+        python $GITHUB_ACTION_PATH/src/main.py --
       shell: bash
