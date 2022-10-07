@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: pythone src/main.py
+    - run: | 
+        export GH_TOKEN  ${{ inputs.GH_TOKEN }}
+        python src/main.py --
       shell: bash
-  env:
-    GH_TOKEN: ${{ inputs.GH_TOKEN }}
