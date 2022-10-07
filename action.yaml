@@ -13,6 +13,6 @@ runs:
     - run: pip install -r $GITHUB_ACTION_PATH/requirements.txt
       shell: bash
     - run: | 
-        export GH_TOKEN  ${{ inputs.GH_TOKEN }}
+        export GH_TOKEN=${{ inputs.GH_TOKEN }}
         python $GITHUB_ACTION_PATH/src/main.py --
       shell: bash
