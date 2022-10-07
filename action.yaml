@@ -1,0 +1,13 @@
+name: 'Scan github action'
+description: 'A github action to scan repositories Dockerfile'
+inputs:
+  GH_TOKEN:
+    description: 'A Github PAT'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: pythone src/main.py
+      shell: bash
+  env:
+    GH_TOKEN: ${{ inputs.GH_TOKEN }}
