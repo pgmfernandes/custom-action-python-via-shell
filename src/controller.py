@@ -29,3 +29,4 @@ class ConfigRepositoryController:
             for key in custom_payload:
                 value = custom_payload[key]
                 os.system("echo \"{" + key + "}={" + value + "}\" >> $GITHUB_OUTPUT")
+                print("echo \"{" + key + "}={" + value + "}\" >> $GITHUB_OUTPUT")
