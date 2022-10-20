@@ -4,6 +4,10 @@ inputs:
   GH_TOKEN:
     description: 'A Github PAT'
     required: true
+  SECURE_PIPELINE_TASK:
+    description: Name of the security task
+    required: false
+    default: sast_trivy
 
 outputs:
   ENABLED:
@@ -31,6 +35,6 @@ runs:
     - run: | 
         export GH_TOKEN=${{ inputs.GH_TOKEN }}
         export SECURE_PIPELINE_TASK=${{ inputs.SECURE_PIPELINE_TASK }}
-        python $GITHUB_ACTION_PATH/src/main.py --
+        python $GITHUB_ACTION_PATH/src/main.py
       shell: bash
       name: Executing action
