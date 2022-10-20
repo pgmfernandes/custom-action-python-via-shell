@@ -4,6 +4,10 @@ inputs:
   GH_TOKEN:
     description: 'A Github PAT'
     required: true
+  SECURE_PIPELINE_TASK:
+    description: Name of the security task
+    required: false
+    default: sast_trivy
 
 outputs:
   ENABLED:
