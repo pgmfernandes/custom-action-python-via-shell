@@ -40,5 +40,5 @@ runs:
       shell: bash
 
     - name: Exporting variables
-      run: echo "organization=abc" >> $GITHUB_OUTPUT
+      run: echo "{organization}={abc}" >> $GITHUB_OUTPUT
       shell: bash
