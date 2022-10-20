@@ -1,12 +1,30 @@
 import os
-from cyberconfig import *
+import sys
 
-auth = os.environ['GH_TOKEN']
-config_manager = CyberManager(github_auth=auth)
-github_repository = os.environ['GITHUB_REPOSITORY']
-print(f"[{github_repository}] Busca de arquivo específico de configuração")
-config = config_manager.get_config(owner_and_repo_name=github_repository)
-print(f"[{github_repository}]", config)
+from src.controller import ConfigRepositoryController
 
-github_repository = "test-" + github_repository
-print(f"::set-output name=dockerfiles::{github_repository}")
+GH_TOKEN_STR = "GH_TOKEN"
+GITHUB_REPOSITORY_STR = "GITHUB_REPOSITORY"
+SECURE_PIPELINE_TASK = "SECURE_PIPELINE_TASK"
+
+def init():
+    if GH_TOKEN_STR not in os.environ:
+        raise Exception(f"Environment variable {GH_TOKEN_STR} not defined")
+    if GITHUB_REPOSITORY_STR not in os.environ:
+        raise Exception(f"Environment variable {GITHUB_REPOSITORY_STR} not defined")
+    auth = os.environ[GH_TOKEN_STR]
+    github_repository = os.environ[GITHUB_REPOSITORY_STR]
+    secure_task = os.environ[SECURE_PIPELINE_TASK]
+    c = ConfigRepositoryController(github_auth=auth, github_reposiroty=github_repository)
+    c.execute_configuration(secure_task)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 2:
+        os.environ[GH_TOKEN_STR] = sys.argv[1]
+        os.environ[GITHUB_REPOSITORY_STR] = "pgmfernandes/using-custom-python-action"
+        os.environ[SECURE_PIPELINE_TASK] = "sast_snyk"
+    try:
+        init()
+    except Exception as err:
+        print("::error file=main.py::" + err.__str__())
