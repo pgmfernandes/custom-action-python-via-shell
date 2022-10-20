@@ -1,3 +1,5 @@
+import os
+
 from repository import *
 from model import ConfigPipelineHelper, ConfigPipeline
 
@@ -26,4 +28,4 @@ class ConfigRepositoryController:
         if custom_payload is not None:
             for key in custom_payload:
                 value = custom_payload[key]
-                print(f"::set-output name={key}::{value}")
+                os.system("echo \"{" + key + "}={" + value + "}\" >> $GITHUB_OUTPUT")
