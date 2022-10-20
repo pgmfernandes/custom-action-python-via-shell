@@ -10,15 +10,15 @@ inputs:
     default: sast_trivy
 
 outputs:
-  ENABLED:
+  enabled:
     description: 'Enabled security check'
-    value: ${{ steps.configuring_pipeline.outputs.ENABLED }}
+    value: ${{ steps.executing_action.outputs.enabled }}
   threshold:
     description: 'Threhold to break pipeline'
-    value: ${{ steps.configuring_pipeline.outputs.THRESHOLD }}
+    value: ${{ steps.executing_action.outputs.threshold }}
   organization:
     description: 'Threhold to break pipeline'
-    value: ${{ steps.configuring_pipeline.outputs.THRESHOLD }}
+    value: ${{ steps.executing_action.outputs.organization }}
 
 runs:
   using: "composite"
@@ -33,6 +33,7 @@ runs:
       name: Installing dependencies
       
     - name: Executing action
+      id: executing_action
       run: | 
         export GH_TOKEN=${{ inputs.GH_TOKEN }}
         export SECURE_PIPELINE_TASK=${{ inputs.SECURE_PIPELINE_TASK }}
