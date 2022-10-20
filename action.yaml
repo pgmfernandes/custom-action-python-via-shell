@@ -32,9 +32,12 @@ runs:
       shell: bash
       name: Installing dependencies
       
-    - run: | 
+    - name: Executing action
+      run: | 
         export GH_TOKEN=${{ inputs.GH_TOKEN }}
         export SECURE_PIPELINE_TASK=${{ inputs.SECURE_PIPELINE_TASK }}
         python $GITHUB_ACTION_PATH/src/main.py
       shell: bash
-      name: Executing action
+
+    - name: Exporting variables
+      run: echo "organization=abc" >> $GITHUB_OUTPUT
