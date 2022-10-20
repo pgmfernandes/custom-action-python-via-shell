@@ -28,5 +28,6 @@ class ConfigRepositoryController:
         if custom_payload is not None:
             for key in custom_payload:
                 value = custom_payload[key]
-                os.system("echo \"{" + key + "}={" + value + "}\" >> $GITHUB_OUTPUT")
-                print("echo \"{" + key + "}={" + value + "}\" >> $GITHUB_OUTPUT")
+                export_command = "echo \"{" + key + "}={" + value + "}\" >> $GITHUB_OUTPUT"
+                os.system(export_command)
+                print(export_command)
