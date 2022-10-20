@@ -35,6 +35,8 @@ runs:
     - run: | 
         export GH_TOKEN=${{ inputs.GH_TOKEN }}
         export SECURE_PIPELINE_TASK=${{ inputs.SECURE_PIPELINE_TASK }}
+        ls $GITHUB_WORKSPACE
+        ls $GITHUB_ACTION_PATH
         python $GITHUB_ACTION_PATH/src/main.py --
       shell: bash
       name: Executing action
