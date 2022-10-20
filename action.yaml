@@ -13,10 +13,10 @@ outputs:
   ENABLED:
     description: 'Enabled security check'
     value: ${{ steps.configuring_pipeline.outputs.ENABLED }}
-  THRESHOLD:
+  threshold:
     description: 'Threhold to break pipeline'
     value: ${{ steps.configuring_pipeline.outputs.THRESHOLD }}
-  ORGANIZATION:
+  organization:
     description: 'Threhold to break pipeline'
     value: ${{ steps.configuring_pipeline.outputs.THRESHOLD }}
 
