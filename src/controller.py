@@ -1,5 +1,5 @@
 from repository import *
-from src.model import ConfigPipelineHelper, ConfigPipeline
+from model import ConfigPipelineHelper, ConfigPipeline
 
 
 class ConfigRepositoryController:

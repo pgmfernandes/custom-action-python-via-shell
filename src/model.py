@@ -1,6 +1,6 @@
 import json
 
-from src.utility import get_json_property
+from utility import get_json_property
 
 
 class ScanConfig:

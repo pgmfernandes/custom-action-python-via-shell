@@ -1,7 +1,7 @@
 import os
 import sys
 
-from src.controller import ConfigRepositoryController
+from controller import ConfigRepositoryController
 
 GH_TOKEN_STR = "GH_TOKEN"
 GITHUB_REPOSITORY_STR = "GITHUB_REPOSITORY"
